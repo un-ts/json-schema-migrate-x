@@ -15,16 +15,18 @@ import type { SchemaVersion } from './types.js'
 const ajvCache: Partial<Record<'default' | 'draft2020', AjvCore.default>> = {}
 
 /**
- * Retrieves an Ajv validator instance for a specified JSON Schema draft version.
+ * Retrieves an Ajv validator instance for a specified JSON Schema draft
+ * version.
  *
- * This function returns a cached Ajv instance if available, or creates a new one configured for either
- * 'draft2019' (default) or 'draft2020'. The created instance is enhanced with a custom "migrateSchema" keyword
- * that transforms JSON Schemas to be compatible with different specification drafts by adjusting properties
- * such as "id", "$schema", "constant", "enum", and various numeric constraints.
+ * This function returns a cached Ajv instance if available, or creates a new
+ * one configured for either 'draft2019' (default) or 'draft2020'. The created
+ * instance is enhanced with a custom "migrateSchema" keyword that transforms
+ * JSON Schemas to be compatible with different specification drafts by
+ * adjusting properties such as "id", "$schema", "constant", "enum", and various
+ * numeric constraints.
  *
  * @param version - The target JSON Schema version (defaults to 'draft2019').
  * @returns An Ajv instance configured for JSON Schema validation and migration.
- *
  * @remark The custom "migrateSchema" keyword may throw a TypeError if a schema's "id" is not a string, or an Error
  * if the "id" format is invalid for the given version during the migration process.
  */
