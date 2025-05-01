@@ -8,11 +8,13 @@ import type { SchemaVersion } from './types.js'
 /**
  * Generates a migration schema object based on the specified version.
  *
- * This function constructs a schema object used for validating schema migrations. It selects between
- * two draft schemas depending on whether the provided version is 'draft2020' or not, and returns an object
- * with a unique `$id`, the chosen schema, and an `allOf` array that combines migration metadata with a reference
- * to the base schema. For the 'draft2020' version, a `$dynamicAnchor` is added, whereas for other versions a
- * `$recursiveAnchor` property is set.
+ * This function constructs a schema object used for validating schema
+ * migrations. It selects between two draft schemas depending on whether the
+ * provided version is 'draft2020' or not, and returns an object with a unique
+ * `$id`, the chosen schema, and an `allOf` array that combines migration
+ * metadata with a reference to the base schema. For the 'draft2020' version, a
+ * `$dynamicAnchor` is added, whereas for other versions a `$recursiveAnchor`
+ * property is set.
  *
  * @param version - The migration schema version (e.g., 'draft2020').
  * @returns The migration schema object configured for the supplied version.
@@ -31,12 +33,15 @@ export function getMigrateSchema(version: SchemaVersion): SchemaObject {
 /**
  * Returns a schema migration function for the specified version.
  *
- * The returned function validates a provided schema against a migration schema and ensures its "$schema"
- * property is set to the correct meta-schema for the given version. The migration validator is compiled
- * on the first invocation and reused for subsequent validations.
+ * The returned function validates a provided schema against a migration schema
+ * and ensures its "$schema" property is set to the correct meta-schema for the
+ * given version. The migration validator is compiled on the first invocation
+ * and reused for subsequent validations.
  *
- * @param version - The schema version specifying which migration rules and meta-schema to use.
- * @returns A function that, when given a schema object, validates it for migration and updates its "$schema" property.
+ * @param version - The schema version specifying which migration rules and
+ *   meta-schema to use.
+ * @returns A function that, when given a schema object, validates it for
+ *   migration and updates its "$schema" property.
  */
 export function getMigrate(version: SchemaVersion) {
   let migrate: ValidateFunction | undefined

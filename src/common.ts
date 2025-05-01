@@ -8,15 +8,17 @@ import {
 import type { SchemaVersion } from './types.js'
 
 /**
- * Recursively evaluates a JSON schema to determine if it reduces to a constant boolean value.
+ * Recursively evaluates a JSON schema to determine if it reduces to a constant
+ * boolean value.
  *
- * An empty schema (i.e., an object with no keys) is considered to be a constant true schema.
- * If the schema has only the "not" property, the function evaluates the value of "not" recursively
- * and returns its logical negation when it resolves to a boolean.
+ * An empty schema (i.e., an object with no keys) is considered to be a constant
+ * true schema. If the schema has only the "not" property, the function
+ * evaluates the value of "not" recursively and returns its logical negation
+ * when it resolves to a boolean.
  *
  * @param schema - The JSON schema object to evaluate.
- * @returns A boolean indicating the constant result if determinable, or undefined if the schema's
- *          boolean value cannot be established.
+ * @returns A boolean indicating the constant result if determinable, or
+ *   undefined if the schema's boolean value cannot be established.
  */
 export function constantResultSchema(
   schema: AnySchemaObject,
@@ -36,12 +38,15 @@ export function constantResultSchema(
 /**
  * Returns the JSON meta-schema corresponding to the specified schema version.
  *
- * This function selects the appropriate meta-schema constant based on the provided version,
- * mapping 'draft7', 'draft2019', and 'draft2020' to their respective meta-schema definitions.
- * If an unrecognized version is provided, the function returns undefined.
+ * This function selects the appropriate meta-schema constant based on the
+ * provided version, mapping 'draft7', 'draft2019', and 'draft2020' to their
+ * respective meta-schema definitions. If an unrecognized version is provided,
+ * the function returns undefined.
  *
- * @param version - The JSON Schema version (e.g., 'draft7', 'draft2019', 'draft2020').
- * @returns The meta-schema constant for the specified version, or undefined if the version is not supported.
+ * @param version - The JSON Schema version (e.g., 'draft7', 'draft2019',
+ *   'draft2020').
+ * @returns The meta-schema constant for the specified version, or undefined if
+ *   the version is not supported.
  */
 export function metaSchema(version: SchemaVersion) {
   switch (version) {
